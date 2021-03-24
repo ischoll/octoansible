@@ -1,0 +1,19 @@
+[ububots]
+octowrkr.neptune.local
+packerbot02.neptune.local
+packerbot03.neptune.local
+packerbot04.neptune.local
+packerbot05.neptune.local
+packerbot06.neptune.local
+hashiqube.neptune.local
+botrancher.neptune.local
+10.0.0.66 #1604smol
+10.0.5.22 #mysqlbot
+10.0.5.20 #555bot1
+10.0.5.14 #555bot2
+
+[ububots:vars]
+ansible_user=ansible
+ansible_become=yes
+ansible_become_method=sudo
+ansible_python_interpreter='/usr/bin/env python3'
