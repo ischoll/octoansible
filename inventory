@@ -18,3 +18,14 @@ ansible_become=yes
 ansible_become_method=sudo
 ansible_python_interpreter='/usr/bin/env python3'
 ansible_ssh_common_args='-o StrictHostKeyChecking=no'
+
+[varnishlab]
+varnisher.555lab.local
+phpone.555lab.local
+phptwo.555lab.local
+bindr01.555lab.local
+
+[varnishlab:vars]
+ansible_user=ansible
+ansible_become=yes
+ansible_become_method=sudo
