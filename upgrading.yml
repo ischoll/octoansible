@@ -1,0 +1,57 @@
+---
+- hosts: all
+  serial: 4
+
+  tasks:
+
+    - name: clean apt
+      become: true
+      become_user: root
+      become_method: sudo
+      when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+      apt:
+        autoclean: yes
+
+    - name: autoremove apt
+      become: true
+      become_user: root
+      become_method: sudo
+      when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+      apt:
+        autoremove: yes
+
+    - name: Perform apt update
+      become: true
+      become_user: root
+      become_method: sudo
+      when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+      apt:
+        update_cache: true
+
+    - name: Perform apt upgrades
+      become: true
+      become_user: root
+      become_method: sudo
+      when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+      apt:
+        update_cache: true
+        upgrade: dist
+        cache_valid_time: 86400 #One day
+
+
+    - name: Perform yum upgrades
+      become: true
+      become_user: root
+      become_method: sudo
+      when: ansible_distribution == 'CentOS'
+      yum:
+        name: '*'
+        state: latest
+
+  # handlers:
+  #   - name: Reboot
+  #     when: "'physical' not in group_names and not ci_host"
+  #     become: true
+  #     become_user: root
+  #     become_method: sudo
+  #     reboot:
